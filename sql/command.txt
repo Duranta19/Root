@@ -1,0 +1,25 @@
+CREATE DATABASE mohajon;
+
+CREATE TABLE accounts(
+    id int PRIMARY key,
+    username varchar(15),
+    pass varchar(24),
+    catagory varchar(20),
+    name varchar(30),
+    address varchar(24),
+    phnNum varchar(11),
+    gender varchar(10)
+    );
+ALTER TABLE `accounts` ADD `createDate` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `gender`;
+
+INSERT INTO `accounts` (`id`, `username`, `pass`, `catagory`, `name`, `address`, `phnNum`, `gender`, `createDate`) 
+VALUES ('1', 'akamal11', '1111', 'Farmer', 'Abdul Kamal', '145,Khulna', '01894578265', 'Male', current_timestamp());
+INSERT INTO `accounts` (`id`, `username`, `pass`, `catagory`, `name`, `address`, `phnNum`, `gender`, `createDate`) 
+VALUES ('2', 'mss14', '1112', 'Distributor', 'Md Salam', '15,Khulna', '01866578265', 'Male', current_timestamp());
+INSERT INTO `accounts` (`id`, `username`, `pass`, `catagory`, `name`, `address`, `phnNum`, `gender`, `createDate`) 
+VALUES ('3', 'mkm22', '1113', 'Retailer', 'Md Kalam', '1215,Dhaka', '0178678265', 'Male', current_timestamp());
+
+ALTER TABLE `accounts` ADD UNIQUE(`username`);
+
+
+UPDATE `demand` SET `demand` = '700000000' WHERE `demand`.`product_name` = 'Rice';

@@ -1,0 +1,34 @@
+create table distributor(
+    id int(11)
+)
+ALTER TABLE `distributor` ADD `id` INT(10) NOT NULL AFTER `d_sl`, ADD `product_name` VARCHAR(25) NOT NULL AFTER `id`, ADD `buing_price` INT(10) NOT NULL AFTER `product_name`, ADD `selling_price` INT(10) NOT NULL DEFAULT '0' AFTER `buing_price`, ADD `trnx_id` INT(15) NOT NULL AFTER `selling_price`;
+ALTER TABLE `distributor` CHANGE `d_sl` `d_sl` INT(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `distributor` (`d_sl`, `id`, `product_name`, `buing_price`, `selling_price`, `trnx_id`) VALUES (NULL, '2', 'Rice', '15', '0', '45789542');
+ALTER TABLE `distributor` ADD `quantity` INT(10) NULL AFTER `product_name`;
+
+UPDATE `distributor` SET `selling_price` = '30' WHERE `distributor`.`d_sl` = 3;
+
+
+//new table 
+
+CREATE TABLE `distributor` (
+  `d_sl` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) DEFAULT NULL,
+  `product_name` varchar(25) NOT NULL,
+  `quantity` int(10) DEFAULT NULL,
+  `sold` int(11) NOT NULL,
+  `unsold` int(11) NOT NULL,
+  `buing_price` int(10) NOT NULL,
+  `selling_price` int(10) NOT NULL DEFAULT 0,
+  `trnx_id` int(15) NOT NULL,
+  PRIMARY KEY (`d_sl`),
+  KEY `id` (`id`),
+  CONSTRAINT `distributor_ibfk_1` FOREIGN KEY (`id`) REFERENCES `accounts` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4
+
+
+SELECT *, 
+        (SELECT name FROM accounts WHERE farmer.id = accounts.id and farmer.unsold>0) as f_name, 
+        (SELECT address FROM accounts WHERE farmer.id = accounts.id and farmer.unsold>0) as f_location 
+FROM farmer  
+where farmer.unsold>0 and farmer.product like '%%' or (SELECT name FROM accounts WHERE farmer.id = accounts.id and accounts.name like '%k%' and farmer.unsold>0) or (SELECT address FROM accounts WHERE farmer.id = accounts.id and accounts.address like '%%' and farmer.unsold>0);

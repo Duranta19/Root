@@ -1,0 +1,10 @@
+CREATE TABLE `mohajon`.`fsell_dbuy` (`sl` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY , 
+`f_id` INT(11) NOT NULL ,
+`d_id` INT(11) NOT NULL , `p_name` VARCHAR(10) NOT NULL , 
+`ammount` INT(10) NOT NULL , `tprice` INT(10) NOT NULL , `t_id` INT(10) NOT NULL);
+
+SELECT (SELECT name
+                                        FROM accounts
+                                        where accounts.id = f_id) as Dist_name,p_name, ammount,t_id,f_id 
+from fsell_dbuy
+where f_id = 1;

@@ -1,0 +1,10 @@
+CREATE TABLE `dsell_rbuy` (
+  `sl` int(11) NOT NULL AUTO_INCREMENT,
+  `d_id` int(11) NOT NULL,
+  `r_id` int(11) NOT NULL,
+  `p_name` varchar(10) NOT NULL,
+  `amount` int(10) NOT NULL,
+  `tprice` int(10) NOT NULL,
+  `t_id` int(10) NOT NULL,
+  PRIMARY KEY (`sl`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

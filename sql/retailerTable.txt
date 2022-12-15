@@ -1,0 +1,12 @@
+CREATE TABLE `retailer` (
+  `r_sl` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) DEFAULT NULL,
+  `product_name` varchar(25) NOT NULL,
+  `quantity` int(10) NOT NULL,
+  `buing_price` int(10) NOT NULL,
+  `selling_price` int(10) NOT NULL,
+  `trnx_id` int(15) NOT NULL,
+  PRIMARY KEY (`r_sl`),
+  KEY `id` (`id`),
+  CONSTRAINT `retailer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `accounts` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4
